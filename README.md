@@ -1,4 +1,4 @@
-# R<br/>[![version](https://img.shields.io/npm/v/@ariii/r.svg)](https://www.npmjs.com/package/@ariii/r) [![license](https://img.shields.io/github/license/ariiiman/r.svg)](https://github.com/ariiiman/r/blob/master/LICENSE)
+# R<br/>[![version](https://img.shields.io/npm/v/@ariii/r.svg)](https://www.npmjs.com/package/@ariii/r) [![version](https://img.shields.io/github/package-json/v/ariiiman/r.svg)](https://github.com/ariiiman/r/blob/master/package.json) [![license](https://img.shields.io/github/license/ariiiman/r.svg)](https://github.com/ariiiman/r/blob/master/LICENSE)
 
 A light JavaScript library.
 
