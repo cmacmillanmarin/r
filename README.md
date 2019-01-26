@@ -1,4 +1,4 @@
-# R<br/>[![version](https://img.shields.io/npm/v/@ariii/r.svg)](https://www.npmjs.com/package/@ariii/r) [![version](https://img.shields.io/github/package-json/v/ariiiman/r.svg)](https://github.com/ariiiman/r/blob/master/package.json) [![license](https://img.shields.io/github/license/ariiiman/r.svg)](https://github.com/ariiiman/r/blob/master/LICENSE)
+# R<br/>[![license](https://img.shields.io/github/license/ariiiman/r.svg)](https://github.com/ariiiman/r/blob/master/LICENSE) [![minified size](https://img.shields.io/github/size/ariiiman/r/index.js.svg?label=minified%20size)](https://github.com/ariiiman/r/blob/master/index.js) [![npm version](https://img.shields.io/npm/v/@ariii/r.svg)](https://www.npmjs.com/package/@ariii/r)
 
 A light JavaScript library.
 
@@ -51,24 +51,6 @@ Aristide Benoist
 
 ## Licence
 
-MIT License
+[MIT](https://github.com/ariiiman/r/blob/master/LICENSE)
 
-Copyright (c) 2019 Aristide Benoist
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
+Copyright (c) 2019-present, Aristide Benoist
