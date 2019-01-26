@@ -20,29 +20,25 @@ R.Delay = function (cb, d) {
     this.d = d
 
     R.BM(this, ['loop'])
+
+    this.raf = new R.Raf(this.loop)
 }
 
 R.Delay.prototype = {
 
     run: function () {
-        this.raf = requestAnimationFrame(this.loop)
+        this.raf.run()
     },
 
     stop: function () {
-        cancelAnimationFrame(this.raf)
+        this.raf.stop()
     },
 
-    tab: function (v) {
-        this.start += v
-    },
+    loop: function (t) {
+        var progress = this.d > 0 ? Math.min(t / this.d, 1) : 1
 
-    loop: function (now) {
-        if (!this.start) this.start = now
-        var progress = this.d > 0 ? Math.min((now - this.start) / this.d, 1) : 1
-
-        if (progress + 0.0000001 < 1) {
-            this.raf = requestAnimationFrame(this.loop)
-        } else if (this.cb) {
+        if (progress + 0.0000001 >= 1) {
+            this.stop()
             this.cb()
         }
     }

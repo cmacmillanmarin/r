@@ -6,36 +6,34 @@ THROTTLE
 ──────────────────────────────────────────
 ──────────────────────────────────────────
 
-►►►  firstTime for window resizer
-
 const throttle = new R.Throttle({
-    cb: callback,
-    delay: 200
-    onlyAtEnd: true
+    delay: 200,
+    onlyAtEnd: true,
+    cb: callback
 })
 
-throttle.init()
+throttle.run()
 
 */
 
 R.Throttle = function (o) {
     this.delay = o.delay
-    this.cb = o.cb
     this.onlyAtEnd = o.onlyAtEnd
+    this.cb = o.cb
     this.last
-    this.timer
+    this.t
 }
 
 R.Throttle.prototype = {
 
-    init: function () {
+    run: function () {
         var self = this
         var firstTime = true
         var now = Date.now()
         if ((this.last && now < this.last + this.delay) || firstTime) {
             firstTime = false
-            clearTimeout(this.timer)
-            this.timer = setTimeout(function () {
+            clearTimeout(this.t)
+            this.t = setTimeout(function () {
                 self.last = now
                 self.cb()
             }, this.delay)

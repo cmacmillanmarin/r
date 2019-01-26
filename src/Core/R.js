@@ -18,6 +18,6 @@ R.R(number, precision)
 */
 
 R.R = function (n, p) {
-    var p = p !== undefined ? Math.pow(10, p) : 1000
+    var p = R.Is.def(p) ? Math.pow(10, p) : 1000
     return Math.round(n * p) / p
 }

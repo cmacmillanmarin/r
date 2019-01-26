@@ -12,10 +12,10 @@ const elementClassIndex = R.Index.class(elementWithClass, className)
 */
 
 R.Index = {
-    index: function (n, els) {
-        var elsL = els.length
-        for (var i = 0; i < elsL; i++) {
-            if (n === els[i]) {
+    index: function (n, el) {
+        var elL = el.length
+        for (var i = 0; i < elL; i++) {
+            if (n === el[i]) {
                 return i
             }
         }
@@ -23,12 +23,12 @@ R.Index = {
     },
 
     list: function (n) {
-        var els = n.parentNode.children
-        return this.index(n, els)
+        var el = n.parentNode.children
+        return this.index(n, el)
     },
 
     class: function (n, cN) {
-        var els = R.G.class(cN)
-        return this.index(n, els)
+        var el = R.G.class(cN)
+        return this.index(n, el)
     }
 }

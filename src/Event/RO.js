@@ -6,73 +6,69 @@ RESIZE & ORIENTATION
 ──────────────────────────────────────────
 ──────────────────────────────────────────
 
-R.BM(this, ['resize'])
+S.BM(this, ['resize'])
 
-this.RO = new R.RO({
-    cb: this.resize,
-    throttle: {
-        delay: 100,
-        onlyAtEnd: true
-    }
-})
+this.ro = new R.RO({cb: this.resize, throttleDelay: 100})
 
-this.RO.on()
-this.RO.off()
+this.ro.on()
 
 resize (event) {
-
+    console.log(event)
 }
+
+this.ro.off()
 
 */
 
-R.RO = function (o) {
+var RO = function (o) {
     this.cb = o.cb
-    this.iM = R.Snif.isMobile
+
+    this.eT = R.Snif.isMobile ? 'orientationchange' : 'resize'
     this.tick = false
 
     R.BM(this, ['gT', 'gRaf', 'run'])
 
     this.t = new R.Throttle({
-        cb: this.gRaf,
-        delay: o.throttle.delay,
-        onlyAtEnd: o.throttle.onlyAtEnd
+        delay: o.throttleDelay,
+        onlyAtEnd: true,
+        cb: this.gRaf
     })
+    this.raf = new R.Raf(this.run)
 }
 
-R.RO.prototype = {
+RO.prototype = {
 
     on: function () {
-        this.l('add')
+        this.l('a')
     },
 
     off: function () {
-        this.l('remove')
+        this.l('r')
     },
 
     l: function (a) {
-        var w = window
-        if (this.iM) {
-            R.L(w, a, 'orientationchange', this.gT)
-        } else {
-            R.L(w, a, 'resize', this.gT)
-        }
+        R.L(window, a, this.eT, this.gT)
     },
 
     gT: function (e) {
         this.e = e
-        this.t.init()
+        this.t.run()
     },
 
     gRaf: function () {
         if (!this.tick) {
             this.tick = true
-            requestAnimationFrame(this.run)
+            this.raf.run()
         }
     },
 
     run: function () {
         this.cb(this.e)
+
+        this.raf.stop()
         this.tick = false
     }
 
 }
+
+R.RO = RO

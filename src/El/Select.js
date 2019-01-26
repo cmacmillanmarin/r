@@ -13,26 +13,26 @@ const name = R.Select.name(selector)
 */
 
 R.Select = {
-    el: function (v) {
+    el: function (s) {
         var el = []
-        if (R.Is.string(v)) {
-            var elName = v.substring(1)
-            if (v.charAt(0) === '#') {
+        if (R.Is.str(s)) {
+            var elName = s.substring(1)
+            if (s.charAt(0) === '#') {
                 el[0] = R.G.id(elName)
             } else {
                 el = R.G.class(elName)
             }
         } else {
-            el[0] = v
+            el[0] = s
         }
         return el
     },
 
-    type: function (v) {
-        return v.charAt(0) === '#' ? 'id' : 'class'
+    type: function (s) {
+        return s.charAt(0) === '#' ? 'id' : 'class'
     },
 
-    name: function (v) {
-        return v.substring(1)
+    name: function (s) {
+        return s.substring(1)
     }
 }

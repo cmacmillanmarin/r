@@ -6,11 +6,11 @@ LERP
 ──────────────────────────────────────────
 ──────────────────────────────────────────
 
-►►►  init : simple lerp (!== OP's algorithm used to prevent the floating-point error)
+►►►  init → simple lerp (!== OP's algorithm used to prevent the floating-point error)
 
 R.Lerp.init(start, end, multiplier)
 
-►►►  extend : lerp with coordinates change
+►►►  extend → lerp with coordinates change
 
 R.Lerp.extend(nX, n0, n1, start, end)
 

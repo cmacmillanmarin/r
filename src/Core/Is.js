@@ -6,21 +6,21 @@ IS
 ──────────────────────────────────────────
 ──────────────────────────────────────────
 
-const isString = R.Is.string(varToCheck)
-const isObject = R.Is.object(varToCheck)
+const isString = R.Is.str(valueToCheck)
+const isObject = R.Is.obj(valueToCheck)
 
 */
 
 R.Is = {
-    string: function (v) {
+    str: function (v) {
         return typeof v === 'string'
     },
 
-    object: function (v) {
+    obj: function (v) {
         return v === Object(v)
     },
 
-    array: function (v) {
+    arr: function (v) {
         return v.constructor === Array
     },
 
@@ -28,20 +28,7 @@ R.Is = {
         return v !== undefined
     },
 
-    undef: function (v) {
+    und: function (v) {
         return v === undefined
     }
 }
-
-/*
-    TODO
-
-    nodeList (nodes) {
-        const sdc = Object.prototype.toString.call(nodes)
-
-        return typeof nodes === 'object' &&
-            /^\[object (HTMLCollection|NodeList|Object)]$/.test(sdc) &&
-            (typeof nodes.length === 'number') &&
-            (nodes.length === 0 || (typeof nodes[0] === 'object' && nodes[0].nodeType > 0))
-    }
-*/

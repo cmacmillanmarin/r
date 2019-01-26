@@ -6,46 +6,47 @@ MOUSEMOVE
 ──────────────────────────────────────────
 ──────────────────────────────────────────
 
-►►►  element is optional
+►►►  el → document element by default
 
-R.BM(this, ['mmCb'])
+S.BM(this, ['mousemove'])
 
-this.MM = new R.MM({
-    element: '#element',
-    cb: this.mmCb
-})
+this.mm = new R.MM({cb: this.mousemove, el: '#element'})
 
-this.MM.on()
-this.MM.off()
+this.mm.on()
 
-mmCb (posX, posY, event) {
-
+mousemove (posX, posY, event) {
+    console.log(posX)
 }
+
+this.mm.off()
 
 */
 
-R.MM = function (o) {
-    this.el = R.Is.def(o.element) ? R.Select.el(o.element)[0] : document
+var MM = function (o) {
     this.cb = o.cb
+    this.el = R.Has(o, 'el') ? R.Select.el(o.el)[0] : document
+
     this.iM = R.Snif.isMobile
+    this.eT = this.iM ? 'touch' : 'mouse'
     this.tick = false
 
     R.BM(this, ['gRaf', 'run'])
+
+    this.raf = new R.Raf(this.run)
 }
 
-R.MM.prototype = {
+MM.prototype = {
 
     on: function () {
-        this.l('add')
+        this.l('a')
     },
 
     off: function () {
-        this.l('remove')
+        this.l('r')
     },
 
     l: function (a) {
-        var type = this.iM ? 'touch' : 'mouse'
-        R.L(this.el, a, type + 'move', this.gRaf)
+        R.L(this.el, a, this.eT + 'move', this.gRaf)
     },
 
     gRaf: function (e) {
@@ -56,18 +57,18 @@ R.MM.prototype = {
 
         if (!this.tick) {
             this.tick = true
-            requestAnimationFrame(this.run)
+            this.raf.run()
         }
     },
 
     run: function () {
         var t = this.iM ? this.e.changedTouches[0] : this.e
-        var x = t['pageX']
-        var y = t['pageY']
-        var e = this.e
+        this.cb(t['pageX'], t['pageY'], this.e)
 
-        this.cb(x, y, e)
+        this.raf.stop()
         this.tick = false
     }
 
 }
+
+R.MM = MM

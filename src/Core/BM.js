@@ -10,10 +10,10 @@ R.BM(this, ['bindFunction1', 'bindFunction2', 'bindFunction3'])
 
 */
 
-R.BM = function (self, arr) {
-    var arrL = arr.length
+R.BM = function (c, a) {
+    var arrL = a.length
 
     for (var i = 0; i < arrL; i++) {
-        self[arr[i]] = self[arr[i]].bind(self)
+        c[a[i]] = c[a[i]].bind(c)
     }
 }

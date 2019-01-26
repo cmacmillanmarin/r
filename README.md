@@ -4,7 +4,7 @@ A light JavaScript library.
 
 ## Installation
 
-    $ yarn add @ariiiman/r --dev
+    $ yarn add @ariii/r --dev
 
 ## Usage
 
@@ -12,7 +12,7 @@ Look at the **src** folder in the github repository for more information
 
 ### Import
 
-    import R from '@ariiiman/r'
+    import R from '@ariii/r'
 
 ### Return the body node of the document
 
@@ -20,11 +20,11 @@ Look at the **src** folder in the github repository for more information
 
 ### Add scroll event listener
 
-    R.L(element, 'add', 'click', callback)
+    R.L(element, 'a', 'click', callback)
 
 ### Check if a variable is an object
 
-    const isObj = R.Is.object(variable)
+    const isObj = R.Is.obj(variable)
 
 ### Play animations with Merom
 

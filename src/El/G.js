@@ -13,24 +13,24 @@ const span = R.G.tag('span')
 CHILD OF ELEMENT
 ────────────────
 
-const elements = R.G.class('elements', parentEl)
+const elements = R.G.class('elementClassName', parentEl)
 
 */
 
 R.G = {
-    parent: function (p) {
+    p: function (p) {
         return p ? p : document
     },
 
     id: function (el, p) {
-        return this.parent(p).getElementById(el)
+        return this.p(p).getElementById(el)
     },
 
     class: function (el, p) {
-        return this.parent(p).getElementsByClassName(el)
+        return this.p(p).getElementsByClassName(el)
     },
 
     tag: function (el, p) {
-        return this.parent(p).getElementsByTagName(el)
+        return this.p(p).getElementsByTagName(el)
     }
 }

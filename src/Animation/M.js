@@ -126,6 +126,7 @@ R.M = function (o) {
     R.BM(this, ['gRaf', 'loop', 'upSvg', 'upLine', 'upProp'])
 
     this.v = this.varsInit(o)
+    this.raf = new R.Raf(this.loop)
 }
 
 R.M.prototype = {
@@ -143,12 +144,9 @@ R.M.prototype = {
             delay: o.delay || 0,
             cb: o.cb || false,
             cbDelay: o.cbDelay || 0,
-            reverse: o.reverse || false,
             round: o.round,
             progress: 0,
-            time: {
-                elapsed: 0
-            }
+            elapsed: 0
         }
         v.elL = v.el.length
 
@@ -217,8 +215,8 @@ R.M.prototype = {
                 elWL: l.elWithLength,
                 dashed: l.dashed,
                 coeff: {
-                    start: l.start !== undefined ? (100 - l.start) / 100 : 1,
-                    end: l.end !== undefined ? (100 - l.end) / 100 : 0
+                    start: R.Is.def(l.start) ? (100 - l.start) / 100 : 1,
+                    end: R.Is.def(l.end) ? (100 - l.end) / 100 : 0
                 },
                 shapeL: [],
                 origin: {
@@ -290,21 +288,22 @@ R.M.prototype = {
         return v
     },
 
-    play: function (opts) {
+    play: function (o) {
         this.pause()
-        this.varsUpd(opts)
+        this.varsUpd(o)
         this.delay.run()
     },
 
     pause: function () {
-        cancelAnimationFrame(this.raf)
-        this.needEnd = true
-        this.delayUp('stop')
+        this.raf.stop()
+        if (this.delay) {
+            this.delay.stop()
+        }
     },
 
     varsUpd: function (opts) {
         var o = opts || {}
-        var newEnd = R.Has(o, 'reverse') && o.reverse ? 'start' : 'end'
+        var newEnd = R.Has(o, 'reverse') ? 'start' : 'end'
 
         // Prop
         if (R.Has(this.v, 'prop')) {
@@ -347,7 +346,7 @@ R.M.prototype = {
             }
         }
 
-        this.v.d.curr = R.Has(o, 'd') ? o.d : this.v.d.origin - this.v.d.curr + this.v.time.elapsed
+        this.v.d.curr = R.Has(o, 'd') ? o.d : this.v.d.origin - this.v.d.curr + this.v.elapsed
         this.v.e.value = o.e || this.v.e.value
         this.v.e.calc = R.Ease[this.v.e.value]
         this.v.delay = R.Has(o, 'delay') ? o.delay : this.v.delay
@@ -359,38 +358,18 @@ R.M.prototype = {
     },
 
     gRaf: function () {
-        this.v.time.start = 0
-
-        this.raf = requestAnimationFrame(this.loop)
+        this.raf.run()
     },
 
-    tab: function (v) {
-        if (this.v.time.start) {
-            this.v.time.start += v
-        }
-        this.delayUp('tab', v)
-    },
-
-    delayUp: function (type, v) {
-        if (this.delay) {
-            this.delay[type](v)
-        }
-        if (this.cbDelay) {
-            this.cbDelay[type](v)
-        }
-    },
-
-    loop: function (now) {
-        if (!this.v.time.start) this.v.time.start = now
-        this.v.time.elapsed = now - this.v.time.start
-        this.v.progress = this.v.d.curr > 0 ? this.v.e.calc(Math.min(this.v.time.elapsed / this.v.d.curr, 1)) : 1
-
-        this.v.update()
-
-        if (this.v.progress + 0.0000001 < 1) {
-            this.raf = requestAnimationFrame(this.loop)
-        } else if (this.needEnd) {
-            this.needEnd = false
+    loop: function (t) {
+        this.v.elapsed = t
+        if (this.v.progress + 0.0000001 < 1 && this.v.d.curr > 0) {
+            this.v.progress = this.v.e.calc(Math.min(t / this.v.d.curr, 1))
+            this.v.update()
+        } else {
+            this.pause()
+            this.v.progress =  1
+            this.v.update()
             if (this.v.cb) {
                 this.cbDelay.run()
             }
@@ -421,7 +400,7 @@ R.M.prototype = {
 
         // Dom update
         for (var i = 0; i < this.v.elL; i++) {
-            if (this.v.el[i] === undefined) break
+            if (R.Is.und(this.v.el[i])) break
             if (t !== 0) {
                 this.v.el[i].style.transform = t
             }
@@ -449,7 +428,7 @@ R.M.prototype = {
 
         // Dom update
         for (var i = 0; i < this.v.elL; i++) {
-            if (this.v.el[i] === undefined) break
+            if (R.Is.und(this.v.el[i])) break
             this.v.el[i].setAttribute(this.v.svg.attr, this.v.svg.curr)
         }
     },
