@@ -1,4 +1,4 @@
-# R<br/>[![license](https://img.shields.io/github/license/ariiiman/r.svg)](https://github.com/ariiiman/r/blob/master/LICENSE) [![minified size](https://img.shields.io/github/size/ariiiman/r/index.js.svg?label=minified%20size)](https://github.com/ariiiman/r/blob/master/index.js) [![npm version](https://img.shields.io/npm/v/@ariii/r.svg)](https://www.npmjs.com/package/@ariii/r) [![dev dependencies](https://img.shields.io/david/dev/ariiiman/r.svg)](https://www.npmjs.com/package/uglify-js)
+# R<br/>[![dev dependencies](https://img.shields.io/david/dev/ariiiman/r.svg)](https://www.npmjs.com/package/uglify-js) [![npm version](https://img.shields.io/npm/v/@ariii/r.svg)](https://www.npmjs.com/package/@ariii/r) [![minified size](https://img.shields.io/github/size/ariiiman/r/index.js.svg?label=minified%20size)](https://github.com/ariiiman/r/blob/master/index.js) [![license](https://img.shields.io/github/license/ariiiman/r.svg)](https://github.com/ariiiman/r/blob/master/LICENSE)
 
 A light JavaScript library.
 
