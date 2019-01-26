@@ -8,7 +8,7 @@ A light JavaScript library.
 
 ## Usage
 
-Look at the **src** folder in the github repository for more information
+Look at the [src](https://github.com/ariiiman/r/tree/master/src) folder for more information
 
 ### Import
 
