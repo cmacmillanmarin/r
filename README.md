@@ -1,4 +1,4 @@
-# R<br/><br/>[![version](https://img.shields.io/npm/v/r.svg)](https://www.npmjs.com/package/@ariii/r)
+# R<br/><br/>[![version](https://img.shields.io/npm/v/ariiiman/r.svg)](https://www.npmjs.com/package/@ariii/r)
 
 A light JavaScript library.
 
