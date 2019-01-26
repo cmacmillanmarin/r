@@ -8,7 +8,7 @@ A light JavaScript library.
 
 ## Usage
 
-Look at the [src](https://github.com/ariiiman/r/tree/master/src) folder for more information
+Look at the [src](https://github.com/ariiiman/r/tree/master/src) folder for more information.
 
 ### Import
 
@@ -45,12 +45,10 @@ Look at the [src](https://github.com/ariiiman/r/tree/master/src) folder for more
 
 ## Author
 
-Aristide Benoist
+[Aristide Benoist](https://www.aristidebenoist.com)
 
-[www.aristidebenoist.com](https://www.aristidebenoist.com)
-
-## Licence
+## License
 
 [MIT](https://github.com/ariiiman/r/blob/master/LICENSE)
 
-Copyright (c) 2019-present, Aristide Benoist
+Copyright (c) 2019-present, Aristide Benoist.
