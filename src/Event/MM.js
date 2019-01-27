@@ -6,7 +6,7 @@ MOUSEMOVE
 ──────────────────────────────────────────
 ──────────────────────────────────────────
 
-►►►  el → document element by default
+►►►  el is optional → document element by default
 
 S.BM(this, ['mousemove'])
 

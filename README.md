@@ -37,7 +37,7 @@ Look at the [src](https://github.com/ariiiman/r/tree/master/src) folder for more
 
     const tl = new R.TL()
     tl.from({el: '#id0', p: {x: [0, 600, 'px'], rotate: [0, 360]}, d: 300, e: 'i3', delay: 300})
-    tl.from({el: '#id1', p: {x: [0, 600, 'px'], rotate: [0, 360]}, d: 500, e: 'o6', cb: myCallback})
+    tl.from({el: '#id1', p: {x: [0, 600, 'px'], rotate: [0, 360]}, d: 500, e: 'o6', cb: callback})
 
     tl.play()
 

@@ -123,15 +123,15 @@ LINE CSS EXAMPLE
 */
 
 R.M = function (o) {
-    R.BM(this, ['gRaf', 'loop', 'upSvg', 'upLine', 'upProp'])
+    R.BM(this, ['gRaf', 'run', 'uSvg', 'uLine', 'uProp'])
 
-    this.v = this.varsInit(o)
-    this.raf = new R.Raf(this.loop)
+    this.v = this.vInit(o)
+    this.raf = new R.Raf(this.run)
 }
 
 R.M.prototype = {
 
-    varsInit: function (o) {
+    vInit: function (o) {
         var v = {
             el: R.Select.el(o.el),
             e: {
@@ -154,11 +154,11 @@ R.M.prototype = {
         if (R.Has(o, 'update')) {
             v.update = function () {o.update(v)}
         } else if (R.Has(o, 'svg')) {
-            v.update = this.upSvg
+            v.update = this.uSvg
         } else if (R.Has(o, 'line')) {
-            v.update = this.upLine
+            v.update = this.uLine
         } else {
-            v.update = this.upProp
+            v.update = this.uProp
         }
 
         var p = o.p || false
@@ -290,7 +290,7 @@ R.M.prototype = {
 
     play: function (o) {
         this.pause()
-        this.varsUpd(o)
+        this.vUpd(o)
         this.delay.run()
     },
 
@@ -301,7 +301,7 @@ R.M.prototype = {
         }
     },
 
-    varsUpd: function (opts) {
+    vUpd: function (opts) {
         var o = opts || {}
         var newEnd = R.Has(o, 'reverse') ? 'start' : 'end'
 
@@ -361,7 +361,7 @@ R.M.prototype = {
         this.raf.run()
     },
 
-    loop: function (t) {
+    run: function (t) {
         this.v.elapsed = t
         if (this.v.progress + 0.0000001 < 1 && this.v.d.curr > 0) {
             this.v.progress = this.v.e.calc(Math.min(t / this.v.d.curr, 1))
@@ -376,7 +376,7 @@ R.M.prototype = {
         }
     },
 
-    upProp: function () {
+    uProp: function () {
         // Lerp
         for (var i = 0; i < this.v.propL; i++) {
             this.v.prop[i].curr = this.lerp(this.v.prop[i].start, this.v.prop[i].end)
@@ -416,7 +416,7 @@ R.M.prototype = {
         }
     },
 
-    upSvg: function () {
+    uSvg: function () {
         // Lerp
         this.v.svg.currTemp = ''
         for (var i = 0; i < this.v.svg.arrL; i++) {
@@ -433,7 +433,7 @@ R.M.prototype = {
         }
     },
 
-    upLine: function () {
+    uLine: function () {
         // Lerp + Dom update
         for (var i = 0; i < this.v.elL; i++) {
             var elS = this.v.el[i].style
@@ -445,8 +445,8 @@ R.M.prototype = {
         }
     },
 
-    lerp: function (start, end) {
-        return R.R(R.Lerp.init(start, end, this.v.progress), this.v.round)
+    lerp: function (s, e) {
+        return R.R(R.Lerp(s, e, this.v.progress), this.v.round)
     },
 
     svgSplit: function (coords) {

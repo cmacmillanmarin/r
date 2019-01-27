@@ -10,6 +10,6 @@ R.Has(object, 'property')
 
 */
 
-R.Has = function (obj, key) {
-    return obj ? hasOwnProperty.call(obj, key) : false
+R.Has = function (obj, p) {
+    return obj ? hasOwnProperty.call(obj, p) : false
 }

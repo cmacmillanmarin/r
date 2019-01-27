@@ -20,14 +20,14 @@ this.tl.play({reverse: true})
 
 R.TL = function () {
     this.arr = []
-    this.delay = 0
+    this.del = 0
 }
 
 R.TL.prototype = {
 
     from: function (o) {
-        this.delay += R.Has(o, 'delay') ? o.delay : 0
-        o.delay = this.delay
+        this.del += R.Has(o, 'delay') ? o.delay : 0
+        o.delay = this.del
         this.arr.push(new R.M(o))
     },
 

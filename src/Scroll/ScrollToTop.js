@@ -7,7 +7,7 @@ SCROLL TO TOP
 ──────────────────────────────────────────
 
 R.ScrollToTop({
-    totalH: element.offsetHeight,
+    h: element.offsetHeight,
     cb: afterTop
 })
 
@@ -17,20 +17,20 @@ R.ScrollToTop = function (o) {
     var curr = pageYOffset
     var opts = {
         dest: 0,
-        d: duration(),
-        e: ease(),
+        d: d(),
+        e: e(),
         cb: o.cb
     }
 
     R.ScrollTo(opts)
 
-    function duration () {
-        var coeff = R.Lerp.init(300, 1500, curr / o.totalH)
+    function d () {
+        var coeff = R.Lerp(300, 1500, curr / o.h)
 
         return curr === 0 ? 0 : coeff
     }
 
-    function ease () {
+    function e () {
         var step = 500
 
         if (curr <= step * 5) {

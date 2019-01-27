@@ -16,9 +16,9 @@ var Tab = function () {
     this.arrL = 0
     this.pause = 0
 
-    R.BM(this, ['change'])
+    R.BM(this, ['run'])
 
-    R.L(document, 'a', 'visibilitychange', this.change)
+    R.L(document, 'a', 'visibilitychange', this.run)
 }
 
 Tab.prototype = {
@@ -37,7 +37,7 @@ Tab.prototype = {
         }
     },
 
-    change: function () {
+    run: function () {
         var now = performance.now()
 
         if (document.hidden) {

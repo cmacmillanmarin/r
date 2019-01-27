@@ -17,7 +17,7 @@ throttle.run()
 */
 
 R.Throttle = function (o) {
-    this.delay = o.delay
+    this.del = o.delay
     this.onlyAtEnd = o.onlyAtEnd
     this.cb = o.cb
     this.last
@@ -30,13 +30,13 @@ R.Throttle.prototype = {
         var self = this
         var firstTime = true
         var now = Date.now()
-        if ((this.last && now < this.last + this.delay) || firstTime) {
+        if ((this.last && now < this.last + this.del) || firstTime) {
             firstTime = false
             clearTimeout(this.t)
             this.t = setTimeout(function () {
                 self.last = now
                 self.cb()
-            }, this.delay)
+            }, this.del)
         } else {
             this.last = now
             if (!this.onlyAtEnd) {

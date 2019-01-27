@@ -32,7 +32,7 @@ R.ScrollTo = function (o) {
     }
 
     function up (v) {
-        scrollable.scrollTop = Math.round(R.Lerp.init(start, end, v.progress) * r) / r
+        scrollable.scrollTop = Math.round(R.Lerp(start, end, v.progress) * r) / r
     }
 
     function gCb () {
