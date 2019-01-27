@@ -18,7 +18,7 @@ Look at the [src](https://github.com/ariiiman/r/tree/master/src) folder for more
 
     const body = R.Dom.body
 
-### Add scroll event listener
+### Add a click event listener
 
     R.L(element, 'a', 'click', callback)
 
