@@ -8,9 +8,6 @@
     "maintainers": [
         "ariiiman <email@aristidebenoist.com>"
     ],
-    "bugs": {
-        "url": "https://github.com/ariiiman/r/issues"
-    },
     "repository": {
         "type": "git",
         "url": "git+https://github.com/ariiiman/r.git"
@@ -24,4 +21,5 @@
     },
     "homepage": "https://github.com/ariiiman/r#readme"
 }
+
 
