@@ -1,6 +1,6 @@
 {
     "name": "@ariii/r",
-    "version": "0.0.6",
+    "version": "0.0.7",
     "description": "A light JavaScript library.",
     "author": "Aristide Benoist",
     "license": "MIT",
@@ -21,11 +21,3 @@
     },
     "homepage": "https://github.com/ariiiman/r#readme"
 }
-
-
-
-
-
-
-
-

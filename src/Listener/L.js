@@ -20,7 +20,6 @@ R.L = function (el, a, t, cb) {
 
     if (t === pE[3]) {
         type = 'onwheel' in d ? 'wheel' : R.Is.und(d.onmousewheel) ? 'mousewheel' : 'DOMMouseScroll'
-        console.log(type)
     } else if (t === 'focusOut') {
         type = R.Snif.isFirefox ? 'blur' : 'focusout'
     } else {
@@ -29,6 +28,6 @@ R.L = function (el, a, t, cb) {
 
     var action = a === 'a' ? 'add' : 'remove'
     for (var i = 0; i < elL; i++) {
-        el[i][action + 'EventListener'](t, cb, o)
+        el[i][action + 'EventListener'](type, cb, o)
     }
 }
