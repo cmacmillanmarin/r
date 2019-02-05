@@ -27,7 +27,6 @@ R.ScrollTo = function (o) {
     if (start === end) {
         gCb()
     } else {
-        R.WTP.on()
         a.play()
     }
 
@@ -36,8 +35,6 @@ R.ScrollTo = function (o) {
     }
 
     function gCb () {
-        R.WTP.off()
-
         if (o.cb) {
             o.cb()
         }

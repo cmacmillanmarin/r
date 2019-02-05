@@ -2,11 +2,29 @@
 
 ──────────────────────────────────────────
 ──────────────────────────────────────────
-Listener
+LISTENER
 ──────────────────────────────────────────
 ──────────────────────────────────────────
 
+ADD
+───
+
 R.L(element, 'a', 'click', callback)
+
+REMOVE
+──────
+
+R.L(element, 'r', 'click', callback)
+
+EXAMPLE
+───────
+
+listen (action) {
+    R.L(element, action, 'click', callback)
+}
+
+this.listen('a')
+this.listen('r')
 
 */
 
