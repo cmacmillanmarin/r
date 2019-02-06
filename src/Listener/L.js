@@ -37,7 +37,7 @@ R.L = function (el, a, t, cb) {
     var o = pE.indexOf(t) === -1 ? false : {passive: false}
 
     if (t === pE[3]) {
-        type = 'onwheel' in d ? 'wheel' : R.Is.und(d.onmousewheel) ? 'mousewheel' : 'DOMMouseScroll'
+        type = 'onwheel' in d ? 'wheel' : R.Is.def(d.onmousewheel) ? 'mousewheel' : 'DOMMouseScroll'
     } else if (t === 'focusOut') {
         type = R.Snif.isFirefox ? 'blur' : 'focusout'
     } else {
