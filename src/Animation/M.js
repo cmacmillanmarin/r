@@ -364,7 +364,7 @@ R.M.prototype = {
     run: function (t) {
         this.v.elapsed = t
         if (this.v.progress + 0.0000001 < 1 && this.v.d.curr > 0) {
-            this.v.progress = this.v.e.calc(Math.min(t / this.v.d.curr, 1))
+            this.v.progress = Math.min(this.v.e.calc(t / this.v.d.curr), 1)
             this.v.update()
         } else {
             this.pause()
