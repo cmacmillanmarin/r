@@ -4,7 +4,7 @@ A light JavaScript library.
 
 ## Installation
 
-    $ yarn add @ariii/r --dev
+    $ npm install @ariii/r --dev
 
 ## Usage
 

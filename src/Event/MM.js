@@ -14,8 +14,8 @@ this.mm = new R.MM({cb: this.mousemove, el: '#element'})
 
 this.mm.on()
 
-mousemove (posX, posY, event) {
-    console.log(posX)
+mousemove (x, y, e) {
+    console.log(x)
 }
 
 this.mm.off()

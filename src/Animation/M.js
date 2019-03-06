@@ -438,9 +438,9 @@ R.M.prototype = {
         for (var i = 0; i < this.v.elL; i++) {
             var elS = this.v.el[i].style
             this.v.line.curr[i] = this.lerp(this.v.line.start[i], this.v.line.end[i])
-            elR.strokeDashoffset = this.v.line.curr[i]
+            elS.strokeDashoffset = this.v.line.curr[i]
             if (this.v.progress === 0) {
-                elR.opacity = 1
+                elS.opacity = 1
             }
         }
     },
