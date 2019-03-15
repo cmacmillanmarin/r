@@ -146,6 +146,7 @@ R.M.prototype = {
             cbDelay: o.cbDelay || 0,
             round: o.round,
             progress: 0,
+            progPrev: 0,
             elapsed: 0
         }
         v.elL = v.el.length
@@ -365,6 +366,10 @@ R.M.prototype = {
         this.v.elapsed = t
         if (this.v.progress + 0.0000001 < 1 && this.v.d.curr > 0) {
             this.v.progress = Math.min(this.v.e.calc(t / this.v.d.curr), 1)
+            if (this.v.progPrev > this.v.progress) {
+                this.v.progress = 1
+            }
+            this.v.progPrev = this.v.progress
             this.v.update()
         } else {
             this.pause()

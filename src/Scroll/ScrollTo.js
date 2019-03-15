@@ -21,7 +21,6 @@ R.ScrollTo = function (o) {
     var scrollable = R.Snif.isFirefox || R.Snif.isIE ? d.documentElement : scrollNode
     var start = pageYOffset
     var end = o.dest
-    var r = 1000
     var a = new R.M({d: o.d, e: o.e, update: up, cb: gCb})
 
     if (start === end) {
@@ -31,7 +30,7 @@ R.ScrollTo = function (o) {
     }
 
     function up (v) {
-        scrollable.scrollTop = Math.round(R.Lerp(start, end, v.progress) * r) / r
+        scrollable.scrollTop = R.R(R.Lerp(start, end, v.progress))
     }
 
     function gCb () {
