@@ -16,7 +16,8 @@ e                   ease
 delay               delay
 cb                  callback
 cbDelay             callback delay
-round               rounding of values
+rLerp               rounding of lerp
+rProgress           rounding of progress
 update              custom function to update external things
 
 PROPERTIES
@@ -144,7 +145,8 @@ R.M.prototype = {
             delay: o.delay || 0,
             cb: o.cb || false,
             cbDelay: o.cbDelay || 0,
-            round: o.round,
+            rLerp: o.rLerp,
+            rProgress: o.rProgress,
             progress: 0,
             progPrev: 0,
             elapsed: 0
@@ -365,7 +367,7 @@ R.M.prototype = {
     run: function (t) {
         this.v.elapsed = t
         if (this.v.progress + 0.0000001 < 1 && this.v.d.curr > 0) {
-            this.v.progress = Math.min(this.v.e.calc(t / this.v.d.curr), 1)
+            this.v.progress = Math.min(R.R(this.v.e.calc(t / this.v.d.curr), this.v.rProgress), 1)
             if (this.v.progPrev > this.v.progress) {
                 this.v.progress = 1
             }
@@ -373,7 +375,7 @@ R.M.prototype = {
             this.v.update()
         } else {
             this.pause()
-            this.v.progress =  1
+            this.v.progress = 1
             this.v.update()
             if (this.v.cb) {
                 this.cbDelay.run()
@@ -451,7 +453,7 @@ R.M.prototype = {
     },
 
     lerp: function (s, e) {
-        return R.R(R.Lerp(s, e, this.v.progress), this.v.round)
+        return R.R(R.Lerp(s, e, this.v.progress), this.v.rLerp)
     },
 
     svgSplit: function (coords) {
