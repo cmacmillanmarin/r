@@ -13,6 +13,6 @@
         "push": "bash build/bash/push.sh"
     },
     "devDependencies": {
-        "uglify-js": "3.4.10"
+        "uglify-js": "3.5.3"
     }
 }
