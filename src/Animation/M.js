@@ -292,6 +292,7 @@ R.M.prototype = {
     play: function (o) {
         this.pause()
         this.vUpd(o)
+        this.v.progPrev = 0
         this.delay.run()
     },
 
