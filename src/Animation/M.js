@@ -15,7 +15,6 @@ d                   duration
 e                   ease
 delay               delay
 cb                  callback
-cbDelay             callback delay
 rLerp               rounding of lerp
 rProgress           rounding of progress
 update              custom function to update external things
@@ -136,7 +135,7 @@ R.M.prototype = {
         var v = {
             el: R.Select.el(o.el),
             e: {
-                value: o.e || 'linear'
+                curve: o.e || 'linear'
             },
             d: {
                 origin: o.d || 0,
@@ -144,7 +143,6 @@ R.M.prototype = {
             },
             delay: o.delay || 0,
             cb: o.cb || false,
-            cbDelay: o.cbDelay || 0,
             rLerp: o.rLerp,
             rProgress: o.rProgress,
             progress: 0,
@@ -349,15 +347,13 @@ R.M.prototype = {
             }
         }
 
-        this.v.d.curr = R.Has(o, 'd') ? o.d : this.v.d.origin - this.v.d.curr + this.v.elapsed
-        this.v.e.value = o.e || this.v.e.value
-        this.v.e.calc = R.Ease[this.v.e.value]
+        this.v.d.curr = R.Has(o, 'd') ? o.d : R.R(this.v.d.origin - this.v.d.curr + this.v.elapsed)
+        this.v.e.curve = o.e || this.v.e.curve
+        this.v.e.calc = R.Ease[this.v.e.curve]
         this.v.delay = R.Has(o, 'delay') ? o.delay : this.v.delay
-        this.v.cbDelay = R.Has(o, 'cbDelay') ? o.cbDelay : this.v.cbDelay
         this.v.cb = R.Has(o, 'cb') ? o.cb : this.v.cb
 
         this.delay = new R.Delay(this.gRaf, this.v.delay)
-        this.cbDelay = new R.Delay(this.v.cb, this.v.cbDelay)
     },
 
     gRaf: function () {
@@ -365,9 +361,10 @@ R.M.prototype = {
     },
 
     run: function (t) {
-        this.v.elapsed = t
+        this.v.elapsed = Math.min(t, this.v.d.curr)
+        this.v.progress = Math.min(R.R(this.v.e.calc(t / this.v.d.curr), this.v.rProgress), 1)
+
         if (this.v.progress + 0.0000001 < 1 && this.v.d.curr > 0) {
-            this.v.progress = Math.min(R.R(this.v.e.calc(t / this.v.d.curr), this.v.rProgress), 1)
             if (this.v.progPrev > this.v.progress) {
                 this.v.progress = 1
             }
@@ -378,7 +375,7 @@ R.M.prototype = {
             this.v.progress = 1
             this.v.update()
             if (this.v.cb) {
-                this.cbDelay.run()
+                this.v.cb()
             }
         }
     },
