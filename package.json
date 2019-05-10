@@ -1,6 +1,6 @@
 {
     "name": "@ariii/r",
-    "version": "0.0.17",
+    "version": "0.0.18",
     "description": "A light JavaScript library.",
     "author": "Aristide Benoist",
     "license": "MIT",
@@ -13,6 +13,6 @@
         "push": "bash build/bash/push.sh"
     },
     "devDependencies": {
-        "uglify-js": "3.5.10"
+        "uglify-js": "3.5.11"
     }
 }
