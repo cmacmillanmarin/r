@@ -133,7 +133,7 @@ R.M.prototype = {
 
     vInit: function (o) {
         var v = {
-            el: R.Select.el(o.el),
+            el: o.el,
             e: {
                 curve: o.e || 'linear'
             },
